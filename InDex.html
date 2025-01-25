@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2d87f0;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #d81871;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ec0588;
+        }
+
+        .wish-box {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BIRTHDAY WISHES</h1>
+        <p>Click the button below to generate a birthday wish!</p>
+        <button id="generate-btn">Click Me</button>
+        <div id="birthday-wish" class="wish-box"></div>
+    </div>
+
+    <script>
+        // Array of birthday wishes
+        const birthdayWishes = [
+            "Wishing you a day filled with love, joy, and happiness! Happy Birthday!",
+            "May your special day be filled with laughter, fun, and amazing memories! Enjoy!",
+            "Happy Birthday to the one who makes life so wonderful! Have an amazing day!",
+            "Here's to another year of great adventures, laughter, and wonderful memories! Happy Birthday!",
+            "May your birthday be as amazing as you are! Wishing you lots of joy and blessings!",
+            "On your special day, I wish you nothing but the best! Enjoy every moment!",
+            "Another year older, but never too old to have fun! Have a fantastic birthday!",
+            "Wishing you a year full of success, happiness, and everything your heart desires. Happy Birthday!",
+            "Happy Birthday! May your day be as sweet as you are and your year even sweeter!",
+            "Celebrating you today and always. Wishing you a birthday that's as special as you!",
+            "Wishing you a day filled with love, laughter, and joy. Happy Birthday!",
+            "May your birthday be the start of a year filled with happiness and success. Enjoy every moment!",
+            "Sending you warm wishes for a fantastic birthday! May your day be as amazing as you are.",
+            "Happy Birthday! May all your dreams come true today and in the year ahead.",
+            "On your special day, I wish you nothing but love, happiness, and all the best life has to offer!",
+            "Here's to another year of great adventures, laughter, and amazing memories. Have a wonderful birthday!",
+            "Happy Birthday to someone who brings so much happiness and light into the world. Have a magical day!",
+            "May your birthday be filled with beautiful moments and unforgettable memories. Cheers to you!",
+            "Wishing you a birthday as wonderful as you are, filled with joy and surrounded by those you love.",
+            "Celebrate today, for it's your special day! Happy Birthday, and may this year be your best one yet."
+        ];
+
+        // Function to generate a random birthday wish
+        function generateWish() {
+            const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
+            const wish = birthdayWishes[randomIndex];
+            const wishBox = $('#birthday-wish');
+
+            // Fade out the existing wish, then change the text and fade it in
+            wishBox.fadeOut(300, function() {
+                wishBox.text(wish);
+                wishBox.fadeIn(500);
+            });
+        }
+
+        // Event listener for the "Generate" button
+        $('#generate-btn').on('click', generateWish);
+    </script>
+</body>
+</html>
