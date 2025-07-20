@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎂 Happy Birthday!</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to top right, #ffecd2 0%, #fcb69f 100%);
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 100px 20px;
+      text-align: center;
+      color: #fff;
+      background-color: #ff6f61;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff4e50, #f9d423);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #000;
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-50px); }
+      100% { transform: translateY(0); }
+    }
+
+    #wishCard {
+      margin: 50px auto;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 40px;
+      text-align: center;
+    }
+
+    #birthday-wish {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.3rem;
+      color: #555;
+      min-height: 80px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #ff6f61;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .generate-btn {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Balloons -->
+<div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+<div class="balloon" style="left: 30%; animation-delay: 1s;"></div>
+<div class="balloon" style="left: 50%; animation-delay: 2s;"></div>
+<div class="balloon" style="left: 70%; animation-delay: 1.5s;"></div>
+<div class="balloon" style="left: 90%; animation-delay: 0.5s;"></div>
+
+<!-- Header -->
+<header>
+  <h1>🎉 Happy Birthday 🎉</h1>
+  <p class="lead">Wishing you all the joy, love, and cake in the world!</p>
+  <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#surpriseModal">🎁 Open Your Surprise</button>
+</header>
+
+<!-- Wish Card -->
+<section id="wishCard">
+  <h2>💌 Random Birthday Wish Generator</h2>
+  <button class="btn btn-primary generate-btn" id="generate-btn">🎉 Generate Wish</button>
+  <div id="birthday-wish" class="mt-3"></div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Make by prince Coder
+</footer>
+
+<!-- Surprise Modal -->
+<div class="modal fade" id="surpriseModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h4 class="mb-3">🎊 Surprise! 🎊</h4>
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="img-fluid rounded mb-3" alt="Surprise GIF">
+      <p>You’re not getting older, you're just increasing in value! 😉</p>
+      <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const birthdayWishes = [
+    "Wishing you a day filled with love, joy, and happiness! Happy Birthday!",
+    "May your special day be filled with laughter, fun, and amazing memories! Enjoy!",
+    "Happy Birthday to the one who makes life so wonderful! Have an amazing day!",
+    "Here's to another year of great adventures, laughter, and wonderful memories! Happy Birthday!",
+    "May your birthday be as amazing as you are! Wishing you lots of joy and blessings!",
+    "On your special day, I wish you nothing but the best! Enjoy every moment!",
+    "Another year older, but never too old to have fun! Have a fantastic birthday!",
+    "Wishing you a year full of success, happiness, and everything your heart desires. Happy Birthday!",
+    "Happy Birthday! May your day be as sweet as you are and your year even sweeter!",
+    "Celebrating you today and always. Wishing you a birthday that's as special as you!",
+    "Wishing you a day filled with love, laughter, and joy. Happy Birthday!",
+    "May your birthday be the start of a year filled with happiness and success. Enjoy every moment!",
+    "Sending you warm wishes for a fantastic birthday! May your day be as amazing as you are.",
+    "Happy Birthday! May all your dreams come true today and in the year ahead.",
+    "On your special day, I wish you nothing but love, happiness, and all the best life has to offer!",
+    "Here's to another year of great adventures, laughter, and amazing memories. Have a wonderful birthday!",
+    "Happy Birthday to someone who brings so much happiness and light into the world. Have a magical day!",
+    "May your birthday be filled with beautiful moments and unforgettable memories. Cheers to you!",
+    "Wishing you a birthday as wonderful as you are, filled with joy and surrounded by those you love.",
+    "Celebrate today, for it's your special day! Happy Birthday, and may this year be your best one yet."
+  ];
+
+  function generateWish() {
+    const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
+    const wish = birthdayWishes[randomIndex];
+    const wishBox = $('#birthday-wish');
+    wishBox.fadeOut(300, function() {
+      wishBox.text(wish);
+      wishBox.fadeIn(500);
+    });
+  }
+
+  $('#generate-btn').on('click', generateWish);
+
+  $('.balloon').on('click', function () {
+    $(this).css('animation', 'none');
+    setTimeout(() => {
+      $(this).css('animation', '');
+    }, 50);
+  });
+</script>
+
+</body>
+</html>
